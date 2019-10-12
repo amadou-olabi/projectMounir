@@ -195,22 +195,22 @@ void editUser()
     puts("\n\t2.Teachers");
     printf("Please enter your choice: ");
     j = getch()-48;
+    char id[10];
     switch(j)
     {
     case 1:
         {
-            printf("Enter the student name:");
-            gets(USER.username);
-            printf("Enter the student password:");
-            gets(USER.password);
+
+            printf("Enter the student id:");
+            gets(id);
         }
+        break;
     case 2:
         {
-            printf("Enter the teacher name:");
-            gets(USER.username);
-            printf("Enter the teacher password:");
-            gets(USER.password);
+            printf("Enter the teacher id:");
+            gets(id);
         }
+        break;
     default :
         {
             printf("\n\tInvalid password or user name!!!");
