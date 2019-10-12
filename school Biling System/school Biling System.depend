@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1570910816 source:e:\amadou data's\documents\sample codes\c and c++\personal libraries\school biling system\main.c
+	"headerfile.h"
+
+1570912542 e:\amadou data's\documents\sample codes\c and c++\personal libraries\school biling system\headerfile.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	<time.h>
+
