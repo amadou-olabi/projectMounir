@@ -218,7 +218,27 @@ void editUser()
     }
 
 }
-void resetUserPassword() {}
+void resetUserPassword()
+ {
+     USER file;
+printf("\tUsername:: ");
+gets(file.username);
+USER *tem = (USER*) calloc(1,sizeof(USER));
+
+ while(fread(tem,sizeof(USER),1,fp)==1)
+ {
+     if(file.username==Info.ID)
+     {
+printf("Enter a new password: ");
+gets(file.password);
+     }
+     else
+        {
+        printf("Not Allow for this o")
+     }
+ }
+
+}
 void receiveFee() {}
 void displayAllStudents() {}
 void displayAllTeachers() {}
