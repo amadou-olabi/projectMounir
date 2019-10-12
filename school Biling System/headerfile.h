@@ -72,7 +72,7 @@ void displayAllStudents();
 void displayAllTeachers();
 void deleteStudent();
 void deleteTeacher();
-void searchStudent(char *ID);
+STUDENT* searchStudent(char *ID);
 void searchTeacher(char *ID);
 void* searchUser(USER usr, int opt);
 

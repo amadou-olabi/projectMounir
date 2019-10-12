@@ -205,7 +205,8 @@ void editUser()
         {
             printf("Enter the student id:");
             gets(id);
-            searchStudent(id);
+            STUDENT *ff = searchStudent(id);
+
         }
         break;
     case 2:
@@ -236,7 +237,7 @@ void resetUserPassword()
     found = searchUser(tem,1);
 
     if(found){
-        strcpy(found.password,generateID('P'));
+        strcpy(found->password,generateID('P'));
         saveUserData(*found);
         puts("User Password Successfully Reset :)");
     }
@@ -250,21 +251,20 @@ void displayAllStudents() {}
 void displayAllTeachers() {}
 void deleteStudent() {}
 void deleteTeacher() {}
-void searchStudent(char *ID)
+STUDENT* searchStudent(char *ID)
 {
-  FILE *fs;
-  char nm[50],c;
-  int a=0,id;
-  printf("\t\t****Search Student****");
-  printf("\n\nEnter ID of student to search: ");
-  fflush(stdin);
-  scanf("%ld",&id);
-  fp=fopen("Students.txt","rb");
-  while(fread(&STUDENT,sizeof(STUDENT),1,fp)==1)
+  FILE* fp=fopen("Students.DAT","rb+");
+  STUDENT *st = (STUDENT*) malloc(sizeof(STUDENT));
+  while(fread(&st,sizeof(STUDENT),1,fp)==1)
   {
-      if(id==STUDENT)
+      if(!stricmp(st->info.ID,ID))
+      {
+          fclose(fp);
+          return st;
+      }
   }
-
+  fclose(fp);
+  return NULL;
 }
 void searchTeacher(char *ID) {}
 void* searchUser(USER usr, int opt)
