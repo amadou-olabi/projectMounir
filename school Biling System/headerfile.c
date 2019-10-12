@@ -92,13 +92,39 @@ void editPasswordTeacher() {}
 ///---Admin
 void addTeacher()
 {
-    char c='M';
+    char c='f';
     system("cls");
     printf("   ADD TEACHER  ");
     while(c=='m'|| c=='M')
     {
-        FILE *fh=fopen("Teacher.DAT","rb+");
-        if()
+        FILE *fh=fopen("Teachers.DAT","ab+");
+        if(fh==NULL)
+        {
+            exit(1);
+        }
+        TEACHER newTeacher;
+        fflush(stdin);
+        printf("\n\tEnter your name :");
+        gets(newTeacher.info.name);
+        scanf(" %d",&newTeacher.semester);
+        strcpy(newTeacher.info.ID,generateID('T'));
+        printf("\n\tGiven ID ::: ");
+        puts(newTeacher.info.ID);
+        printf("\n\tEnter your department: ");
+        gets(newTeacher.info.dept);
+        printf("\n\tEnter salary: ");
+        fflush(stdin);
+        scanf(" %lf",&newTeacher.salary);
+
+        time(&newTeacher.info.createdOfDate);
+
+        fh=fopen("Teachers.DAT","ab+");//opening a binary file in apend mode
+        //fwrite(&st,sizeof(st),1,fp);
+        fwrite(&newTeacher,sizeof(TEACHER),1,fh);
+        fclose(fh);
+        printf("\n\nDo you want to continue with the process(press f or F):");
+        fflush(stdin);
+        c=getch();
     }
 }
 void addStudent()
