@@ -175,8 +175,22 @@ void addStudent()
 }
 void editUser()
 {
+    int j;
     system("cls");
-    printf("")
+    printf("PLEASE ENTRE YOUR ACCOUNT TYPE");
+    printf("\n\t1.Students");
+    printf("\t\n2.Teachers");
+    printf("Please enter your choice:\n");
+    scanf("%d",&j);
+    switch(j)
+    {
+    case 1:
+        {
+            printf("Enter the student name:");
+            scanf("%s",USER.username)
+        }
+    }
+
 }
 void resetUserPassword() {}
 void receiveFee() {}
