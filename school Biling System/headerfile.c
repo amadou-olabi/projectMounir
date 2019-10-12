@@ -59,7 +59,7 @@ void AdminInterface()
         addStudent();
         break;
     case 3:
-
+        editUser();
         break;
     case 4:
         resetUserPassword();
@@ -173,7 +173,11 @@ void addStudent()
         a=getch();
     }
 }
-void editUser() {}
+void editUser()
+{
+    system("cls");
+    printf("")
+}
 void resetUserPassword() {}
 void receiveFee() {}
 void displayAllStudents() {}
