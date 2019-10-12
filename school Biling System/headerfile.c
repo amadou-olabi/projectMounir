@@ -109,15 +109,18 @@ void addTeacher()
         int i=0;
         char ch;
         printf("\nEnter Semester Taken:: ");
-        while(i<3){
+        while(i<3)
+        {
             ch = getche();
             if(ch==13)
                 break;
-            if(isdigit(ch)){
+            if(isdigit(ch))
+            {
                 newTeacher.semester[i] = ch-48;
                 i++;
             }
-            else break;
+            else
+                break;
         }
         newTeacher.sizeSem = i;
         strcpy(newTeacher.info.ID,generateID('T'));
@@ -199,44 +202,44 @@ void editUser()
     switch(j)
     {
     case 1:
-        {
+    {
 
-            printf("Enter the student id:");
-            gets(id);
-        }
-        break;
+        printf("Enter the student id:");
+        gets(id);
+    }
+    break;
     case 2:
-        {
-            printf("Enter the teacher id:");
-            gets(id);
-        }
-        break;
+    {
+        printf("Enter the teacher id:");
+        gets(id);
+    }
+    break;
     default :
-        {
-            printf("\n\tInvalid password or user name!!!");
-        }
+    {
+        printf("\n\tInvalid password or user name!!!");
+    }
     }
 
 }
 void resetUserPassword()
- {
-     USER file;
-printf("\tUsername:: ");
-gets(file.username);
-USER *tem = (USER*) calloc(1,sizeof(USER));
+{
+    USER file;
+    printf("\tUsername:: ");
+    gets(file.username);
+    USER *tem = (USER*) calloc(1,sizeof(USER));
 
- while(fread(tem,sizeof(USER),1,fp)==1)
- {
-     if(file.username==Info.ID)
-     {
-printf("Enter a new password: ");
-gets(file.password);
-     }
-     else
+    while(fread(tem,sizeof(USER),1,fp)==1)
+    {
+        if(file.username==Info.ID)
         {
-        printf("Not Allow for this o")
-     }
- }
+            printf("Enter a new password: ");
+            gets(file.password);
+        }
+        else
+        {
+            printf("Not Allow for this o")
+        }
+    }
 
 }
 void receiveFee() {}
