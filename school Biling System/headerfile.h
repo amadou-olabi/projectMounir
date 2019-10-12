@@ -74,7 +74,7 @@ void deleteStudent();
 void deleteTeacher();
 void searchStudent(char *ID);
 void searchTeacher(char *ID);
-void* searchUser(USER usr,int opt);
+void* searchUser(USER usr, int opt);
 
 
 ///---Mechanisms
