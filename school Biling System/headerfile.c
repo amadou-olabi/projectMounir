@@ -202,22 +202,22 @@ void editUser()
     switch(j)
     {
     case 1:
-    {
-
-        printf("Enter the student id:");
-        gets(id);
-    }
-    break;
+        {
+            printf("Enter the student id:");
+            gets(id);
+            searchStudent(id);
+        }
+        break;
     case 2:
-    {
-        printf("Enter the teacher id:");
-        gets(id);
-    }
-    break;
+        {
+            printf("Enter the teacher id:");
+            gets(id);
+        }
+        break;
     default :
-    {
-        printf("\n\tInvalid password or user name!!!");
-    }
+        {
+            printf("\n\tInvalid password or user name!!!");
+        }
     }
 
 }
@@ -250,7 +250,22 @@ void displayAllStudents() {}
 void displayAllTeachers() {}
 void deleteStudent() {}
 void deleteTeacher() {}
-void searchStudent(char *ID) {}
+void searchStudent(char *ID)
+{
+  FILE *fs;
+  char nm[50],c;
+  int a=0,id;
+  printf("\t\t****Search Student****");
+  printf("\n\nEnter ID of student to search: ");
+  fflush(stdin);
+  scanf("%ld",&id);
+  fp=fopen("Students.txt","rb");
+  while(fread(&STUDENT,sizeof(STUDENT),1,fp)==1)
+  {
+      if(id==STUDENT)
+  }
+
+}
 void searchTeacher(char *ID) {}
 void* searchUser(USER usr, int opt)
 {
