@@ -15,7 +15,7 @@ void loginForm()
     }
     else
     {
-        USER *found = (USER*) searchUser(guest);
+        USER *found = (USER*) searchUser(guest,1);
         if(found)
         {
             switch(found->userType)
@@ -106,7 +106,20 @@ void addTeacher()
         fflush(stdin);
         printf("\n\tEnter your name :");
         gets(newTeacher.info.name);
-        scanf(" %d",&newTeacher.semester);
+        int i=0;
+        char ch;
+        printf("\nEnter Semester Taken:: ");
+        while(i<3){
+            ch = getche();
+            if(ch==13)
+                break;
+            if(isdigit(ch)){
+                newTeacher.semester[i] = ch-48;
+                i++;
+            }
+            else break;
+        }
+        newTeacher.sizeSem = i;
         strcpy(newTeacher.info.ID,generateID('T'));
         printf("\n\tGiven ID ::: ");
         puts(newTeacher.info.ID);
@@ -187,7 +200,7 @@ void editUser()
     case 1:
         {
             printf("Enter the student name:");
-            scanf("%s",USER.username)
+            scanf("%s",USER.username);
         }
     }
 
@@ -200,7 +213,7 @@ void deleteStudent() {}
 void deleteTeacher() {}
 void searchStudent(char *ID) {}
 void searchTeacher(char *ID) {}
-void* searchUser(USER usr)
+void* searchUser(USER usr, int opt)
 {
     FILE *fp = fopen("users.DAT","rb+");
     if(fp==NULL)
@@ -211,8 +224,17 @@ void* searchUser(USER usr)
 
     while(fread(tem,sizeof(USER),1,fp)==1)
     {
-        if(!strcmpi(usr.username,tem->username))
-            return tem;
+        switch(opt)
+        {
+        case 1:
+            if(!strcmpi(usr.username,tem->username))
+                return tem;
+            break;
+        case 2:
+            if(!strcmpi(usr.username,tem->username) && !strcmpi(usr.password,tem->password))
+                return tem;
+            break;
+        }
     }
     fclose(fp);
     return NULL;
@@ -231,3 +253,4 @@ char* generateID(char userType)
     strcat(id,numC);
     return id;
 }
+
