@@ -223,6 +223,7 @@ void editUser()
 }
 void resetUserPassword()
 {
+    system("cls");
     USER tem;
     printf("\tUsername:: ");
     gets(tem.username);
@@ -236,7 +237,12 @@ void resetUserPassword()
 
     if(found){
         strcpy(found.password,generateID('P'));
+        saveUserData(*found);
+        puts("User Password Successfully Reset :)");
     }
+    else
+        puts("No User Found :(");
+    getch();
 
 }
 void receiveFee() {}
@@ -290,6 +296,8 @@ char* generateID(char userType)
 void saveUserData(USER newUser)
 {
     FILE *fpr = fopen("users.DAT","rb+");
+    if(fpr==NULL)
+        return;
     FILE *fpt = fopen("temData.DAT","wb+");
 
     USER data;
@@ -297,7 +305,7 @@ void saveUserData(USER newUser)
     {
         if(!stricmp(data.username,newUser.username))
         {
-
+            continue;
         }
         else
         {
@@ -305,5 +313,7 @@ void saveUserData(USER newUser)
         }
     }
     fwrite(&newUser,sizeof(USER),1,fpt);
+    fclose(fpr);
+    fclose(fpt);
 }
 

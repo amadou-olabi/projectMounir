@@ -79,6 +79,7 @@ void* searchUser(USER usr, int opt);
 
 ///---Mechanisms
 char* generateID(char userType);
+void saveUserData(USER newUser);
 
 
 
