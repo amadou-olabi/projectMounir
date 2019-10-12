@@ -15,7 +15,7 @@ void loginForm()
     }
     else
     {
-        USER *found = (USER*) searchUser(guest,1);
+        USER *found = (USER*) searchUser(guest,2);
         if(found)
         {
             switch(found->userType)
@@ -223,22 +223,19 @@ void editUser()
 }
 void resetUserPassword()
 {
-    USER file;
+    USER tem;
     printf("\tUsername:: ");
-    gets(file.username);
-    USER *tem = (USER*) calloc(1,sizeof(USER));
-
-    while(fread(tem,sizeof(USER),1,fp)==1)
+    gets(tem.username);
+    USER *found = NULL;
+    FILE *fp = fopen("users.DAT","rb+");
+    if(fp==NULL)
     {
-        if(file.username==Info.ID)
-        {
-            printf("Enter a new password: ");
-            gets(file.password);
-        }
-        else
-        {
-            printf("Not Allow for this o")
-        }
+        exit(1);
+    }
+    found = searchUser(tem,1);
+
+    if(found){
+        strcpy(found.password,generateID('P'));
     }
 
 }
@@ -288,5 +285,25 @@ char* generateID(char userType)
     itoa(num,numC,16);
     strcat(id,numC);
     return id;
+}
+
+void saveUserData(USER newUser)
+{
+    FILE *fpr = fopen("users.DAT","rb+");
+    FILE *fpt = fopen("temData.DAT","wb+");
+
+    USER data;
+    while(fread(&data,sizeof(USER),1,fpr)==1)
+    {
+        if(!stricmp(data.username,newUser.username))
+        {
+
+        }
+        else
+        {
+            fwrite(&data,sizeof(USER),1,fpt);
+        }
+    }
+    fwrite(&newUser,sizeof(USER),1,fpt);
 }
 
