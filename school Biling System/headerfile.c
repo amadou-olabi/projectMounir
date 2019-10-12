@@ -92,7 +92,7 @@ void editPasswordTeacher() {}
 ///---Admin
 void addTeacher()
 {
-    char c='f';
+    char c='m';
     system("cls");
     printf("   ADD TEACHER  ");
     while(c=='m'|| c=='M')
@@ -112,6 +112,9 @@ void addTeacher()
         puts(newTeacher.info.ID);
         printf("\n\tEnter your department: ");
         gets(newTeacher.info.dept);
+        fflush(stdin);
+        printf("Enter Title: ");
+        gets(newTeacher.title);
         printf("\n\tEnter salary: ");
         fflush(stdin);
         scanf(" %lf",&newTeacher.salary);
