@@ -190,17 +190,30 @@ void editUser()
 {
     int j;
     system("cls");
-    printf("PLEASE ENTRE YOUR ACCOUNT TYPE");
+    printf("\tUSER TYPE");
     printf("\n\t1.Students");
-    printf("\t\n2.Teachers");
-    printf("Please enter your choice:\n");
-    scanf("%d",&j);
+    puts("\n\t2.Teachers");
+    printf("Please enter your choice: ");
+    j = getch()-48;
     switch(j)
     {
     case 1:
         {
             printf("Enter the student name:");
-            scanf("%s",USER.username);
+            gets(USER.username);
+            printf("Enter the student password:");
+            gets(USER.password);
+        }
+    case 2:
+        {
+            printf("Enter the teacher name:");
+            gets(USER.username);
+            printf("Enter the teacher password:");
+            gets(USER.password);
+        }
+    default :
+        {
+            printf("\n\tInvalid password or user name!!!");
         }
     }
 
